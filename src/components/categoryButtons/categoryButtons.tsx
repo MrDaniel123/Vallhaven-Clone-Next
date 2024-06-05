@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import classes from './categoryButtons.module.scss';
 import { SearchContext } from '@/context/context';
 import SortingButton from '../sortingButton/sortingButton';
+import classes from './categoryButtons.module.scss';
 
 export default function CategoryButtons() {
 	const { state, dispatch } = useContext(SearchContext);

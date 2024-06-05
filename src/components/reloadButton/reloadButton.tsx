@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { SearchContext } from '@/context/context';
 import Image from 'next/image';
+import { SearchContext } from '@/context/context';
 import classes from './reloadButton.module.scss';
 
 import reloadIcon from '@/assets/Reload.png';

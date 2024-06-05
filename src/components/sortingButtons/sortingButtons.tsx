@@ -1,8 +1,8 @@
 import { useContext } from 'react';
+import { SearchContext } from '@/context/context';
 import SortingButton from '../sortingButton/sortingButton';
 
 import classes from './sortingButtons.module.scss';
-import { SearchContext } from '@/context/context';
 
 export default function SortingButtons() {
 	const { state, dispatch } = useContext(SearchContext);

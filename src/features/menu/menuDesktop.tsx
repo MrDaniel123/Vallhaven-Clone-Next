@@ -8,11 +8,23 @@ import CategoryButtons from '@/components/categoryButtons/categoryButtons';
 import ReloadButton from '@/components/reloadButton/reloadButton';
 
 import classes from './menuDesktop.module.scss';
+import DropDownMenu from '@/components/dropDownMenu/dropDownMenu';
+
+//Is a list of sorting categories
+const sortingCategories = [
+	'latest',
+	'hot',
+	'topList',
+	'random',
+	'topViews',
+	'favorites',
+	'reverence',
+];
 
 export default function MenuDesktop() {
 	const { state } = useContext(SearchContext);
 
-	//TODO Reload Dunction On click TO DO
+	//TODO Reload Function On click TO DO
 	const foo = () => {
 		console.log('Reload');
 	};
@@ -24,6 +36,11 @@ export default function MenuDesktop() {
 				<span className={classes.breakLine}></span>
 				<PurityButtons />
 				<span className={classes.breakLine}></span>
+				<DropDownMenu
+					categoriesList={sortingCategories}
+					reducerActionName={'SELECT-SORTING'}
+					actualSelectedCategory={state.sorting}
+				/>
 				<div className={classes.reloadButtonWrapper}>
 					<ReloadButton hiddenMenuFn={foo} />
 				</div>

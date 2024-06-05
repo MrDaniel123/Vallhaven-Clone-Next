@@ -1,0 +1,63 @@
+.dropDownMenuWrapper {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// width: 12rem;
+	background-color: rgb(0 0 0 / 35%);
+	padding: 0.5rem 1rem;
+	border-radius: 3px;
+}
+
+.dropDownMenuButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	border: none;
+	border-radius: 6px;
+	height: 3rem;
+	width: 12rem;
+
+	background: #282828;
+	box-shadow: 1px 3px 4.1px -3px #000000, inset 0px -1px 4.8px -2px #000000;
+	border-radius: 2px;
+
+	&:hover {
+		background-color: #3d2b55;
+	}
+
+	p {
+		font-size: 1.2rem;
+		color: #fff;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+}
+
+.iconRotate {
+	transform: rotate(180deg);
+}
+
+.hiddenButtonsWrapper {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.8rem;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	padding: 0.5rem 0.5rem 1.2rem 0.5rem;
+	border-radius: 0 0 3px 3px;
+	background-color: rgb(0 0 0 / 35%);
+}
+
+.isOpen {
+	border-radius: 6px 6px 0 0;
+}
+
+.isSelected {
+	background-color: #3d2b55;
+}
