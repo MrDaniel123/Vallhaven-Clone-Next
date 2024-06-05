@@ -1,0 +1,97 @@
+.menuWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	position: relative;
+	// background-color: #2b2b2b;
+	padding: 1rem 0 2.5rem 0;
+	background: linear-gradient(180deg, #202020 0%, #303030 100%);
+	box-shadow: 0px 4px 11.7px -2px #000000;
+
+	@media (min-width: 1024px) {
+		flex-wrap: nowrap;
+		padding-top: 0.6rem;
+		padding-bottom: 0.6rem;
+	}
+}
+
+.optionsWrapper {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: #1c1c1c;
+	width: 90%;
+	max-width: 50rem;
+	border-radius: 6px;
+
+	@media (min-width: 1024px) {
+		max-width: none;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		gap: 1.6rem;
+	}
+}
+
+.buttonsWrapper {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	justify-content: space-around;
+	padding: 1rem;
+	width: 90%;
+	max-width: 35rem;
+
+	@media (min-width: 1024px) {
+		flex-wrap: nowrap;
+		max-width: none;
+		justify-content: center;
+		gap: 1rem;
+		width: auto;
+	}
+}
+
+.sortingWrapper {
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}
+
+.breakLine {
+	height: 2px;
+	width: 90%;
+	max-width: 36rem;
+	background-color: #5b5b5b;
+	@media (min-width: 1024px) {
+		transform: rotate(180deg);
+		height: 70%;
+		width: 2px;
+	}
+}
+
+.reloadButtonWrapper,
+.searchQueryWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+
+	@media (min-width: 1024px) {
+		width: auto;
+	}
+}
+
+.noDisplayInDesktop {
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}
+
+.noDisplayInMobile {
+	@media (max-width: 1024px) {
+		display: none;
+	}
+}

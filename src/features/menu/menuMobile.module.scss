@@ -1,0 +1,52 @@
+.optionsWrapper {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: #1c1c1c;
+	width: 90%;
+	max-width: 50rem;
+	border-radius: 6px;
+}
+
+.buttonsWrapper {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	justify-content: space-around;
+	padding: 1rem;
+	width: 90%;
+	max-width: 35rem;
+}
+
+.breakLine {
+	height: 2px;
+	width: 90%;
+	max-width: 36rem;
+	background-color: #5b5b5b;
+}
+
+.reloadButtonWrapper,
+.searchQueryWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 90%;
+}
+
+.isMobile {
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}
+
+.reloadButtonWrapper {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}

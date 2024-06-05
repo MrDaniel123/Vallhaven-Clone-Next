@@ -1,0 +1,15 @@
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.8rem;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 6px;
+	background-color: #2e7647;
+
+	p {
+		font-size: 1.6rem;
+		color: #fff;
+	}
+}
