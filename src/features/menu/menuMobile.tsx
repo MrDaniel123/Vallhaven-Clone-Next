@@ -14,7 +14,6 @@ import classes from './menuMobile.module.scss';
 export default function MenuMobile() {
 	const { state } = useContext(SearchContext);
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
-	console.log(state);
 
 	const handleOpenMenu = () => {
 		setMenuIsOpen(!menuIsOpen);

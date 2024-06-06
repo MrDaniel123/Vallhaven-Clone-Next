@@ -9,6 +9,8 @@ import ReloadButton from '@/components/reloadButton/reloadButton';
 
 import classes from './menuDesktop.module.scss';
 import DropDownMenu from '@/components/dropDownMenu/dropDownMenu';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/app/images/layout';
 
 //Is a list of sorting categories
 const sortingCategories = [
@@ -42,7 +44,9 @@ export default function MenuDesktop() {
 					actualSelectedCategory={state.sorting}
 				/>
 				<div className={classes.reloadButtonWrapper}>
-					<ReloadButton hiddenMenuFn={foo} />
+					<QueryClientProvider client={queryClient}>
+						<ReloadButton hiddenMenuFn={foo} />
+					</QueryClientProvider>
 				</div>
 			</section>
 		</>

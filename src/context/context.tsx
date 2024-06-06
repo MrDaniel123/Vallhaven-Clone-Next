@@ -1,10 +1,11 @@
 'use client';
 
 import { createContext, useReducer } from 'react';
-import { ReducerState, reducer } from './reducer';
+import { reducer } from './reducer';
+import { ReducerType } from '@/types/reducerType';
 
 type SearchContext = {
-	state: ReducerState;
+	state: ReducerType;
 	dispatch: React.Dispatch<any>;
 	//!!Any Type To Fix
 };
@@ -13,7 +14,7 @@ type SearchContextProviderProps = {
 	children: React.ReactNode;
 };
 
-const initialState: ReducerState = {
+const initialState: ReducerType = {
 	categoryAnime: true,
 	categoryPeople: false,
 	categoryGeneral: true,

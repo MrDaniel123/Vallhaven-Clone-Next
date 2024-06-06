@@ -1,18 +1,7 @@
 'use client';
 
 import { ImageApiResponseType } from '@/types/imagesType';
-
-export type ReducerState = {
-	categoryAnime: boolean;
-	categoryPeople: boolean;
-	categoryGeneral: boolean;
-	puritySfw: boolean;
-	purityNsfw: boolean;
-	puritySketchy: boolean;
-	sorting: 'latest' | 'hot' | 'topList' | 'random' | 'topViews' | 'favorites' | 'reverence';
-	reloadCount: number;
-	images: ImageApiResponseType | undefined;
-};
+import { ReducerType } from '@/types/reducerType';
 
 export type ReducerAction =
 	| { type: 'SELECT-CATEGORY-ANIME' }
@@ -29,7 +18,7 @@ export type ReducerAction =
 	| { type: 'SAVEIMAGES'; payload: ImageApiResponseType }
 	| { type: 'RELOAD-IMAGES' };
 
-export function reducer(state: ReducerState, action: ReducerAction) {
+export function reducer(state: ReducerType, action: ReducerAction) {
 	switch (action.type) {
 		case 'SELECT-CATEGORY-ANIME':
 			return { ...state, categoryAnime: !state.categoryAnime };
