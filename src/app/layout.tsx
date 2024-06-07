@@ -20,8 +20,8 @@ export default function RootLayout({
 				<Header />
 				<SearchContextProvider>
 					<Menu />
+					{children}
 				</SearchContextProvider>
-				{children}
 			</body>
 		</html>
 	);

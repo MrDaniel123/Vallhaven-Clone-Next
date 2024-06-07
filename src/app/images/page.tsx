@@ -2,8 +2,10 @@
 
 import { useGetImages } from '@/hooks/useGetImages';
 import { useSearchParams } from 'next/navigation';
+import { useInView } from 'react-intersection-observer';
 
 import classes from './page.module.scss';
+import { useEffect } from 'react';
 
 export default function ImagesPage() {
 	const searchParams = useSearchParams();
@@ -11,7 +13,15 @@ export default function ImagesPage() {
 	const purity = searchParams.get('purity');
 	const sorting = searchParams.get('sorting');
 
-	const { data, refetch } = useGetImages({ categories, purity, sorting });
+	const { data, fetchNextPage, isLoading, refetch } = useGetImages({ categories, purity, sorting });
+
+	const { ref, inView } = useInView();
+
+	useEffect(() => {
+		if (inView) {
+			fetchNextPage();
+		}
+	}, [inView, fetchNextPage]);
 
 	const renderData = data?.pages.map(images => {
 		return (
@@ -25,8 +35,10 @@ export default function ImagesPage() {
 
 	return (
 		<div className={classes.wrapper}>
-			<button onClick={() => refetch()}>Refetch page</button>
 			{renderData}
+			<div ref={ref}>
+				<p>{isLoading ? 'Loading' : '...'}</p>
+			</div>
 		</div>
 	);
 
