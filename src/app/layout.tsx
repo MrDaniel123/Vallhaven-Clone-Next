@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/features/header/header';
 import Menu from '@/features/menu/menu';
 import SearchContextProvider from '@/context/context';
+import classes from './page.module.scss';
 
 export const metadata: Metadata = {
 	title: 'Create Next App',

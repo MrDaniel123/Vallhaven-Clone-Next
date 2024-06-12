@@ -1,11 +1,15 @@
 .menuWrapper {
+	position: fixed;
+	top: 5rem;
+	left: 0;
+	z-index: 2;
+	width: 100%;
+
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
 	flex-wrap: wrap;
 	gap: 0.6rem;
-	position: relative;
-	// background-color: #2b2b2b;
 	padding: 1rem 0 2.5rem 0;
 	background: linear-gradient(180deg, #202020 0%, #303030 100%);
 	box-shadow: 0px 4px 11.7px -2px #000000;

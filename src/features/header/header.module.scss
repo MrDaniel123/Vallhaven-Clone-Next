@@ -1,4 +1,9 @@
 .headerContainer {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	height: 5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
