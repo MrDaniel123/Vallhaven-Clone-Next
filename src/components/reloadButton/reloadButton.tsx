@@ -16,6 +16,8 @@ interface Props {
 export default function ReloadButton({ hiddenMenuFn }: Props) {
 	const { dispatch, state } = useContext(SearchContext);
 	const { categories, purity, sorting } = urlQueysGenerator(state);
+	const searchParams = useSearchParams();
+	const query = searchParams.get('q');
 
 	const handleOnClick = () => {
 		dispatch({ type: 'RELOAD' });
@@ -27,6 +29,7 @@ export default function ReloadButton({ hiddenMenuFn }: Props) {
 			href={{
 				pathname: '/images',
 				query: {
+					q: query,
 					categories: categories,
 					purity: purity,
 					sorting: sorting,

@@ -15,13 +15,16 @@ type SearchingQueys = {
 export const getImages = async ({
 	searchingQueys,
 	pageParam = 0,
+	query = undefined,
 }: {
 	searchingQueys: SearchingQueys;
 	pageParam: number;
+	query: string | undefined | null;
 }) => {
 	const { categories, sorting, purity } = searchingQueys;
 	const response = await axios.get<ImageApiResponseType>(`${baseURL}`, {
 		params: {
+			q: query,
 			categories: categories,
 			page: pageParam,
 			apikey: API_KEY,

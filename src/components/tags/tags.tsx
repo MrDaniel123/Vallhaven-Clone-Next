@@ -6,7 +6,17 @@ export default function Tags({ tags }: { tags: TagsType[] }) {
 	return (
 		<div className={classes.tagsWrapper}>
 			{tags.map(tag => (
-				<Link href={`search/${tag.id}`} key={tag.id}>
+				<Link
+					href={{
+						pathname: '/images',
+						query: {
+							q: tag.name,
+							categories: '110',
+							purity: '110',
+							sorting: 'topList',
+						},
+					}}
+					key={tag.id}>
 					<p className={classes.tag}>{`#${tag.name}`}</p>
 				</Link>
 			))}
