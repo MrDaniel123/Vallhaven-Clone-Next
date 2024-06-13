@@ -1,0 +1,117 @@
+.wrapper {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	flex-wrap: wrap;
+	gap: 1.6rem;
+	background-color: #212020;
+	width: 100%;
+	min-height: 100vh;
+	padding: 2rem;
+	padding-top: 12rem;
+
+	@media (min-width: 1024px) {
+		flex-wrap: nowrap;
+		flex-direction: row-reverse;
+	}
+}
+
+.imageWrapper {
+	margin-top: 1.6rem;
+	width: 80%;
+
+	@media (max-width: 668px) {
+		width: 95%;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.sidebar {
+	display: flex;
+	justify-content: center;
+	align-content: flex-start;
+	gap: 3rem;
+	padding-top: 2rem;
+	flex-wrap: wrap;
+	width: 30rem;
+	min-height: 70vh;
+	@media (max-width: 1024px) {
+		width: 90%;
+	}
+}
+
+.breakLine {
+	width: 80%;
+	height: 1px;
+	border: 1px dashed #85aaaf;
+	// background-color: #85aaaf;
+}
+
+.resolution {
+	font-size: 28px;
+	color: #fff;
+	font-weight: 400;
+}
+
+.properties {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	width: 32rem;
+
+	@media (max-width: 1024px) {
+		width: 90%;
+	}
+}
+
+.property {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 1rem;
+	gap: 1rem;
+	width: 100%;
+	h3 {
+		font-size: 1.6rem;
+		color: #85aaaf;
+		width: 50%;
+		text-align: right;
+	}
+}
+
+.propertiesFont {
+	font-size: 1.6rem;
+	color: #fff;
+
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
+
+.userColor {
+	font-size: 1.6rem;
+	color: #ae1616;
+}
+
+.puritySFW {
+	font-size: 1.6rem;
+	color: #78d520;
+	text-transform: uppercase;
+}
+.purityNSFW {
+	font-size: 1.6rem;
+	color: #d82916;
+	text-transform: uppercase;
+}
+.puritySKETCHY {
+	font-size: 1.6rem;
+	color: #e4dd1a;
+	text-transform: uppercase;
+}

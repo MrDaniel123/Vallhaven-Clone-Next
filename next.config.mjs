@@ -6,6 +6,14 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 'th.wallhaven.cc',
 			},
+			{
+				protocol: 'https',
+				hostname: 'w.wallhaven.cc',
+			},
+			{
+				protocol: 'https',
+				hostname: 'wallhaven.cc',
+			},
 		],
 	},
 };
