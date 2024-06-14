@@ -1,14 +1,15 @@
 'use client';
 
+import { useContext, useEffect, useState } from 'react';
 import { useGetImages } from '@/hooks/useGetImages';
 import { useSearchParams } from 'next/navigation';
 import { useInView } from 'react-intersection-observer';
-
-import classes from './page.module.scss';
-import { useEffect, useId, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+import { SearchContext } from '@/context/context';
 import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
+import classes from './page.module.scss';
 
 export default function ImagesPage() {
 	const searchParams = useSearchParams();
@@ -17,19 +18,33 @@ export default function ImagesPage() {
 	const sorting = searchParams.get('sorting');
 	const query = searchParams.get('q');
 
-	const [hasNextPage, setHasNextPage] = useState(true);
-
-	const { data, fetchNextPage, isLoading, isFetchingNextPage } = useGetImages({
-		categories,
-		purity,
-		sorting,
-		query,
-	});
-
 	const { ref, inView } = useInView();
 
+	const { dispatch } = useContext(SearchContext);
+
+	const [params, setParams] = useState({
+		categories: categories,
+		purity: purity,
+		sorting: sorting,
+		query: query,
+	});
+
+	const { data, fetchNextPage, isLoading, isFetchingNextPage } = useGetImages({
+		params,
+	});
+
 	useEffect(() => {
-		if (inView && hasNextPage) {
+		setParams({
+			categories: categories,
+			purity: purity,
+			sorting: sorting,
+			query: query,
+		});
+		dispatch({ type: 'RELOAD' });
+	}, [categories, purity, sorting, query, dispatch]);
+
+	useEffect(() => {
+		if (inView) {
 			fetchNextPage();
 		}
 	}, [inView, fetchNextPage]);
@@ -75,13 +90,10 @@ export default function ImagesPage() {
 		<div className={classes.wrapper}>
 			<ScrollOnTop handleOnCLickFn={scrollOfTheTop} />
 			{renderData}
-			{hasNextPage && (
-				<div ref={ref}>
-					<p>{isLoading ? 'Loading' : '...'}</p>
-				</div>
-			)}
+
+			<div ref={ref}>
+				<p>{isLoading ? 'Loading' : '...'}</p>
+			</div>
 		</div>
 	);
-
-	// return <div className={classes.wrapper}>{/* <main>{renderImages}</main> */}</div>;
 }

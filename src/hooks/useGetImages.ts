@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import { SearchContext } from '../context/context';
 
 import urlQueysGenerator from '@/lib/urlQueysGenerator';
-import { ReducerType } from '@/types/reducerType';
 
 type ParamsType = {
 	purity: string;
@@ -14,14 +13,19 @@ type ParamsType = {
 	sorting: string;
 };
 
-interface Props {
+interface Params {
 	categories: string | null;
 	purity: string | null;
 	sorting: string | null;
 	query: string | null;
 }
 
-export const useGetImages = ({ categories, purity, sorting, query }: Props) => {
+interface Props {
+	params: Params;
+}
+
+export const useGetImages = ({ params }: Props) => {
+	const { categories, purity, sorting, query } = params;
 	const { state } = useContext(SearchContext);
 	let searchingQueys: ParamsType;
 
@@ -44,5 +48,6 @@ export const useGetImages = ({ categories, purity, sorting, query }: Props) => {
 				return allPages.length + 1;
 			},
 		});
+
 	return { data, isError, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage };
 };
