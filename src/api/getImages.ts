@@ -1,36 +1,33 @@
 import { ImageApiResponseType } from '@/types/imagesType';
-import axios from 'axios';
-const baseURL = 'https://wallhaven.cc/api/v1/search';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const baseURL = 'https://wallhaven.cc/api/v1/search?';
 
-// sorting: 'latest' | 'hot' | 'topList' | 'random' | 'topViews' | 'favorites' | 'reverence';
+interface ImagesParams {
+	categories: string;
+	purity: string;
+	sorting: string;
+	query: string;
+	page: string;
+}
 
-type SearchingQueys = {
-	purity: string | null;
-	categories: string | null;
-	sorting: string | null;
-};
+export default async function getImages({
+	categories,
+	purity,
+	sorting,
+	query,
+	page,
+}: ImagesParams): Promise<ImageApiResponseType> {
+	const response = await fetch(
+		`${baseURL}?categories=${categories}&purity=${purity}&sorting=${sorting}&page=${page}&apikey=${API_KEY}`
+	);
 
-export const getImages = async ({
-	searchingQueys,
-	pageParam = 0,
-	query = undefined,
-}: {
-	searchingQueys: SearchingQueys;
-	pageParam: number;
-	query: string | undefined | null;
-}) => {
-	const { categories, sorting, purity } = searchingQueys;
-	const response = await axios.get<ImageApiResponseType>(`${baseURL}`, {
-		params: {
-			q: query,
-			categories: categories,
-			page: pageParam,
-			apikey: API_KEY,
-			purity: purity,
-			sorting: sorting,
-		},
-	});
-	return response.data.data;
-};
+	return response.json() as Promise<ImageApiResponseType>;
+}
+
+// q: query,
+// categories: categories,
+// page: pageParam,
+// apikey: API_KEY,
+// purity: purity,
+// sorting: sorting,

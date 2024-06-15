@@ -16,7 +16,9 @@ export type ReducerAction =
 	  }
 	| { type: 'RELOAD' }
 	| { type: 'SAVEIMAGES'; payload: ImageApiResponseType }
-	| { type: 'RELOAD-IMAGES' };
+	| { type: 'RELOAD-IMAGES' }
+	| { type: 'SET-QUERY'; payload: string }
+	| { type: 'IS-RELOAD'; payload: boolean };
 
 export function reducer(state: ReducerType, action: ReducerAction) {
 	switch (action.type) {
@@ -38,6 +40,8 @@ export function reducer(state: ReducerType, action: ReducerAction) {
 			return { ...state, sorting: action.payload };
 		case 'SAVEIMAGES':
 			return { ...state, images: action.payload };
+		case 'SET-QUERY':
+			return { ...state, query: action.payload };
 		default:
 			return state;
 	}

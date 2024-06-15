@@ -4,7 +4,7 @@ type ThumbsType = {
 	small: string;
 };
 
-type ImageType = {
+export type ImagesType = {
 	id: string;
 	url: string;
 	short_url: string;
@@ -35,6 +35,6 @@ type MetaType = {
 };
 
 export type ImageApiResponseType = {
-	data: ImageType[];
+	data: ImagesType[];
 	meta: MetaType;
 };

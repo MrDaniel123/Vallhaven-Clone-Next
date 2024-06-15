@@ -24,6 +24,7 @@ const initialState: ReducerType = {
 	sorting: 'topList',
 	reloadCount: 0,
 	images: undefined,
+	query: '',
 };
 
 export const SearchContext = createContext<SearchContext>({

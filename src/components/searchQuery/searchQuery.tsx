@@ -7,13 +7,14 @@ import classes from './searchQuery.module.scss';
 import loupe from '@/assets/Loupe.png';
 import Link from 'next/link';
 import { SearchContext } from '@/context/context';
+import urlQueysGenerator from '@/lib/urlQueysGenerator';
 
 export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
-	const [query, setQuery] = useState('');
-	const { dispatch } = useContext(SearchContext);
+	const { dispatch, state } = useContext(SearchContext);
+	const { categories, purity, sorting } = urlQueysGenerator(state);
 
 	function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-		setQuery(e.target.value);
+		dispatch({ type: 'SET-QUERY', payload: e.target.value });
 	}
 
 	function handleReloadImages() {
@@ -22,15 +23,15 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 
 	return (
 		<div className={`${classes.searchQuery} ${isMobile ? classes.mobile : classes.desktop}`}>
-			<input type='text' name='' id='' value={query} onChange={e => handleInputChange(e)} />
+			<input type='text' name='' id='' value={state.query} onChange={e => handleInputChange(e)} />
 			<Link
 				href={{
 					pathname: '/images',
 					query: {
-						q: query,
-						categories: '110',
-						purity: '110',
-						sorting: 'topViews',
+						categories: categories,
+						purity: purity,
+						sorting: sorting,
+						query: state.query,
 					},
 				}}>
 				<button onClick={handleReloadImages}>

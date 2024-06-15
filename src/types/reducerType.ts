@@ -10,4 +10,5 @@ export type ReducerType = {
 	sorting: 'latest' | 'hot' | 'topList' | 'random' | 'topViews' | 'favorites' | 'reverence';
 	reloadCount: number;
 	images: ImageApiResponseType | undefined;
+	query: string;
 };
