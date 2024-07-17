@@ -5,6 +5,7 @@ import { SearchContext } from '@/context/context';
 import { ImagesType } from '@/types/imagesType';
 import { useInView } from 'react-intersection-observer';
 import ImagesList from '../imagesList/imagesList';
+import styled from './loadMoreImages.module.scss';
 
 import getImages from '@/actions/getImages';
 import paramsGenerator from '@/helpes/paramsGenerator';
@@ -63,10 +64,15 @@ export default function LoadMoreImages({
 	return (
 		<>
 			<ImagesList data={images} />
-			{fetchedNextPage && hasNextPage ? (
-				<h1>There is notching here</h1>
+
+			{!fetchedNextPage && !hasNextPage ? (
+				<div className={styled.observer}>
+					<h1>There is nothing here</h1>
+				</div>
 			) : (
-				<div ref={ref}>Observer</div>
+				<div className={styled.observer} ref={ref}>
+					<div className={styled.loader}></div>
+				</div>
 			)}
 		</>
 	);

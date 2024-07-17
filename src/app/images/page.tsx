@@ -19,11 +19,6 @@ interface ImagesParams {
 
 export default function ImagesPage({ searchParams }: { searchParams: ImagesParams }) {
 	const [images, setImages] = useState<ImagesType[] | null>(null);
-	const { state } = useContext(SearchContext);
-
-	useEffect(() => {
-		setImages(null);
-	}, [state.reloadCount]);
 
 	const loadImages = async () => {
 		const images = await getImages(
@@ -38,12 +33,11 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 
 		setImages(images.data);
 	};
+
 	useEffect(() => {
 		setImages(null);
 		loadImages();
 	}, [searchParams]);
-
-	//TODO imagelist has on old data When click the TAGS button
 
 	return (
 		<div className={classes.wrapper}>

@@ -13,11 +13,12 @@ interface Props {
 }
 
 export default function ReloadButton({ hiddenMenuFn }: Props) {
-	const { state } = useContext(SearchContext);
+	const { state, dispatch } = useContext(SearchContext);
 	const { categories, purity, sorting } = paramsGenerator(state);
 
 	const handleOnClick = () => {
 		hiddenMenuFn();
+		dispatch({ type: 'RELOAD' });
 	};
 
 	return (

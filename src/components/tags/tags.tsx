@@ -21,10 +21,10 @@ export default function Tags({ tags }: { tags: TagsType[] }) {
 					href={{
 						pathname: '/images',
 						query: {
-							q: tag.name,
 							categories: '111',
 							purity: '111',
 							sorting: 'latest',
+							query: tag.name,
 						},
 					}}
 					key={tag.id}>

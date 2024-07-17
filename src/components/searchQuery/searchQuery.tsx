@@ -10,18 +10,16 @@ import { SearchContext } from '@/context/context';
 import paramsGenerator from '@/helpes/paramsGenerator';
 
 export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
-	const { state } = useContext(SearchContext);
+	const { dispatch } = useContext(SearchContext);
 	const [query, setQuery] = useState('');
-
-	const { categories, purity, sorting } = paramsGenerator(state);
 
 	function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
 		setQuery(e.target.value);
 	}
 
-	// function handleReloadImages() {
-	// 	dispatch({ type: 'RELOAD' });
-	// }
+	function onCLickHandle(query: String) {
+		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
+	}
 
 	return (
 		<div className={`${classes.searchQuery} ${isMobile ? classes.mobile : classes.desktop}`}>
@@ -36,7 +34,7 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 						query: query,
 					},
 				}}>
-				<button>
+				<button onClick={() => onCLickHandle(query)}>
 					<Image src={loupe} alt={'Loupe'}></Image>
 				</button>
 			</Link>

@@ -26,7 +26,7 @@ export default function MenuDesktop() {
 
 	//TODO Reload Function On click TO DO
 	const foo = () => {
-		console.log('Reload');
+		// console.log('Reload');
 	};
 
 	return (

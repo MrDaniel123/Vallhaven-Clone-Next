@@ -48,8 +48,9 @@ export function reducer(state: ReducerType, action: ReducerAction) {
 			return { ...state, puritySfw: !state.puritySfw };
 		case 'SELECT-PURITY-SKETCHY':
 			return { ...state, puritySketchy: !state.puritySketchy };
+
 		case 'RELOAD':
-			return { ...state, reloadCount: state.reloadCount + 1 };
+			return { ...state, reloadCount: state.reloadCount + 1, query: '' };
 		case 'SELECT-SORTING':
 			return { ...state, sorting: action.payload };
 		case 'SAVEIMAGES':

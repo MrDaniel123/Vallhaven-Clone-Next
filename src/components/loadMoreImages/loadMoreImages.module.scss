@@ -1,0 +1,29 @@
+.observer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60%;
+	height: 3rem;
+	background-color: #4f4a4a;
+	border-radius: 1rem;
+	margin-top: 1rem;
+
+	h1 {
+		font-size: 2rem;
+		color: #fff;
+	}
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+	width: 60px;
+	aspect-ratio: 4;
+	background: radial-gradient(circle closest-side, #ffffff 90%, #0000) 0 / calc(100% / 3) 100% space;
+	clip-path: inset(0 100% 0 0);
+	animation: l1 1s steps(4) infinite;
+}
+@keyframes l1 {
+	to {
+		clip-path: inset(0 -34% 0 0);
+	}
+}
