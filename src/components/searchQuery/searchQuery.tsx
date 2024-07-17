@@ -7,34 +7,36 @@ import classes from './searchQuery.module.scss';
 import loupe from '@/assets/Loupe.png';
 import Link from 'next/link';
 import { SearchContext } from '@/context/context';
-import urlQueysGenerator from '@/lib/urlQueysGenerator';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
-	const { dispatch, state } = useContext(SearchContext);
-	const { categories, purity, sorting } = urlQueysGenerator(state);
+	const { state } = useContext(SearchContext);
+	const [query, setQuery] = useState('');
+
+	const { categories, purity, sorting } = paramsGenerator(state);
 
 	function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-		dispatch({ type: 'SET-QUERY', payload: e.target.value });
+		setQuery(e.target.value);
 	}
 
-	function handleReloadImages() {
-		dispatch({ type: 'RELOAD' });
-	}
+	// function handleReloadImages() {
+	// 	dispatch({ type: 'RELOAD' });
+	// }
 
 	return (
 		<div className={`${classes.searchQuery} ${isMobile ? classes.mobile : classes.desktop}`}>
-			<input type='text' name='' id='' value={state.query} onChange={e => handleInputChange(e)} />
+			<input type='text' name='' id='' value={query} onChange={e => handleInputChange(e)} />
 			<Link
 				href={{
 					pathname: '/images',
 					query: {
-						categories: categories,
-						purity: purity,
-						sorting: sorting,
-						query: state.query,
+						categories: '111',
+						purity: '111',
+						sorting: 'latest',
+						query: query,
 					},
 				}}>
-				<button onClick={handleReloadImages}>
+				<button>
 					<Image src={loupe} alt={'Loupe'}></Image>
 				</button>
 			</Link>

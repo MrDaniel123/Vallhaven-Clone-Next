@@ -1,3 +1,5 @@
+'use server';
+
 import { ImageType } from '@/types/imageType';
 
 const baseURL = 'https://wallhaven.cc/api/v1/';

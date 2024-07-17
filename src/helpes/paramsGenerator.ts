@@ -1,6 +1,6 @@
 import { ReducerType } from '@/types/reducerType';
 
-export default function urlQueysGenerator(state: ReducerType) {
+export default function paramsGenerator(state: ReducerType) {
 	let purityArray: string[] = [];
 	let categoriesArray: string[] = [];
 

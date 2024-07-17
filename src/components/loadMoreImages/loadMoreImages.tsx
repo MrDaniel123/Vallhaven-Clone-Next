@@ -1,13 +1,13 @@
 'use client';
 
-import getImages from '@/api/getImages';
-import { ImagesType } from '@/types/imagesType';
 import { useContext, useEffect, useState } from 'react';
+import { SearchContext } from '@/context/context';
+import { ImagesType } from '@/types/imagesType';
 import { useInView } from 'react-intersection-observer';
 import ImagesList from '../imagesList/imagesList';
-import fetchImages from '@/actions/fetchImage';
-import { SearchContext } from '@/context/context';
-import urlQueysGenerator from '@/lib/urlQueysGenerator';
+
+import getImages from '@/actions/getImages';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 interface ImagesParams {
 	categories: string;
@@ -16,28 +16,39 @@ interface ImagesParams {
 	query: string;
 }
 
-export default function LoadMoreImages({ searchParams }: { searchParams: ImagesParams }) {
+export default function LoadMoreImages({
+	searchParams,
+	fetchedNextPage,
+}: {
+	searchParams: ImagesParams;
+	fetchedNextPage: undefined | boolean;
+}) {
 	const [images, setImages] = useState<ImagesType[]>([]);
 	const [page, setPage] = useState('2');
-	const { dispatch, state } = useContext(SearchContext);
-	console.log(state);
+	const [hasNextPage, setHasNextPage] = useState(true);
+	const { state } = useContext(SearchContext);
 
 	const { ref, inView } = useInView();
 
 	useEffect(() => {
 		setImages([]);
-	}, [state.reloadCount]);
+		setHasNextPage(true);
+	}, [state.reloadCount, searchParams]);
 
 	//TODO use useCallback to  wrap this function
 	const loadMoreImages = async () => {
 		const nextPage = Number(page) + 1;
 		// const newImages = (await fetchImages(searchParams, page)) ?? [];
-		const { categories, purity, sorting } = urlQueysGenerator(state);
+		const { categories, purity, sorting } = paramsGenerator(state);
 
-		const newImages = await fetchImages(
+		const newImages = await getImages(
 			{ categories: categories, purity: purity, sorting: sorting, query: state.query },
 			page
 		);
+
+		if (newImages.data.length === 0) {
+			setHasNextPage(false);
+		}
 
 		setImages((prevImages: ImagesType[]) => [...prevImages, ...newImages.data]);
 		setPage(String(nextPage));
@@ -52,7 +63,11 @@ export default function LoadMoreImages({ searchParams }: { searchParams: ImagesP
 	return (
 		<>
 			<ImagesList data={images} />
-			<div ref={ref}>Observer</div>
+			{fetchedNextPage && hasNextPage ? (
+				<h1>There is notching here</h1>
+			) : (
+				<div ref={ref}>Observer</div>
+			)}
 		</>
 	);
 }

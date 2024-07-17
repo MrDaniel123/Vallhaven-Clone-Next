@@ -7,7 +7,8 @@ export type ReducerType = {
 	puritySfw: boolean;
 	purityNsfw: boolean;
 	puritySketchy: boolean;
-	sorting: 'latest' | 'hot' | 'topList' | 'random' | 'topViews' | 'favorites' | 'reverence';
+	// sorting: 'latest' | 'hot' | 'topList' | 'random' | 'topViews' | 'favorites' | 'reverence';
+	sorting: string;
 	reloadCount: number;
 	images: ImageApiResponseType | undefined;
 	query: string;

@@ -3,6 +3,18 @@
 import { ImageApiResponseType } from '@/types/imagesType';
 import { ReducerType } from '@/types/reducerType';
 
+type PayloadState = {
+	categoryAnime: boolean;
+	categoryGeneral: boolean;
+	categoryPeople: boolean;
+	purityNsfw: boolean;
+	puritySfw: boolean;
+	puritySketchy: boolean;
+	reloadCount: number;
+	sorting: string;
+	query: string;
+};
+
 export type ReducerAction =
 	| { type: 'SELECT-CATEGORY-ANIME' }
 	| { type: 'SELECT-CATEGORY-PEOPLE' }
@@ -18,7 +30,9 @@ export type ReducerAction =
 	| { type: 'SAVEIMAGES'; payload: ImageApiResponseType }
 	| { type: 'RELOAD-IMAGES' }
 	| { type: 'SET-QUERY'; payload: string }
-	| { type: 'IS-RELOAD'; payload: boolean };
+	| { type: 'IS-RELOAD'; payload: boolean }
+	| { type: 'SELECT-PARAMS-TAG'; payload: string }
+	| { type: 'SET-STATE'; payload: PayloadState };
 
 export function reducer(state: ReducerType, action: ReducerAction) {
 	switch (action.type) {
@@ -42,6 +56,32 @@ export function reducer(state: ReducerType, action: ReducerAction) {
 			return { ...state, images: action.payload };
 		case 'SET-QUERY':
 			return { ...state, query: action.payload };
+		case 'SELECT-PARAMS-TAG':
+			return {
+				...state,
+				categoryAnime: true,
+				categoryGeneral: true,
+				categoryPeople: true,
+				purityNsfw: true,
+				puritySfw: true,
+				puritySketchy: true,
+				reloadCount: state.reloadCount + 1,
+				query: action.payload,
+				sorting: 'latest',
+			};
+		case 'SET-STATE':
+			return {
+				...state,
+				categoryAnime: action.payload.categoryAnime,
+				categoryGeneral: action.payload.categoryGeneral,
+				categoryPeople: action.payload.categoryPeople,
+				purityNsfw: action.payload.purityNsfw,
+				puritySfw: action.payload.puritySfw,
+				puritySketchy: action.payload.puritySketchy,
+				reloadCount: state.reloadCount + 1,
+				query: action.payload.query,
+				sorting: action.payload.query,
+			};
 		default:
 			return state;
 	}

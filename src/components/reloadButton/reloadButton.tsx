@@ -6,19 +6,18 @@ import classes from './reloadButton.module.scss';
 import { useRouter } from 'next/navigation';
 
 import reloadIcon from '@/assets/Reload.png';
-import urlQueysGenerator from '@/lib/urlQueysGenerator';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 interface Props {
 	hiddenMenuFn: () => void;
 }
 
 export default function ReloadButton({ hiddenMenuFn }: Props) {
-	const { state, dispatch } = useContext(SearchContext);
-	const { categories, purity, sorting } = urlQueysGenerator(state);
+	const { state } = useContext(SearchContext);
+	const { categories, purity, sorting } = paramsGenerator(state);
 
 	const handleOnClick = () => {
 		hiddenMenuFn();
-		dispatch({ type: 'RELOAD' });
 	};
 
 	return (
@@ -29,7 +28,7 @@ export default function ReloadButton({ hiddenMenuFn }: Props) {
 					categories: categories,
 					purity: purity,
 					sorting: sorting,
-					query: state.query,
+					query: '',
 				},
 			}}>
 			<button className={classes.button} onClick={handleOnClick}>
