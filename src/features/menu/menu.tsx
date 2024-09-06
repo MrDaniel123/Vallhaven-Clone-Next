@@ -6,6 +6,7 @@ import MenuMobile from './menuMobile';
 import MenuDesktop from './menuDesktop';
 
 import classes from './menu.module.scss';
+import OptionBtn from './optionBtn';
 
 export default function Menu() {
 	const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -15,12 +16,14 @@ export default function Menu() {
 	};
 
 	return (
-		<div className={classes.menuWrapper}>
-			<div className={classes.searchQueryWrapper}>
-				<SearchQuery isMobile={true} />
+		<>
+			<div className={classes.menuWrapper}>
+				<div className={classes.searchQueryWrapper}>
+					<SearchQuery isMobile={true} />
+				</div>
+				<MenuDesktop />
+				<MenuMobile openMenuFn={handleOpenMenu} menuIsOpen={menuIsOpen} />
 			</div>
-			<MenuDesktop />
-			<MenuMobile />
-		</div>
+		</>
 	);
 }

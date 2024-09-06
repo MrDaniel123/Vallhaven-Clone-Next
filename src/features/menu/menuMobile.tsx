@@ -1,7 +1,6 @@
 'use client';
 
-import { useContext, useState } from 'react';
-import { SearchContext } from '@/context/context';
+import { useContext, useEffect, useState } from 'react';
 
 import OptionBtn from './optionBtn';
 import PurityButtons from '@/components/purityButtons/purityButtons';
@@ -11,31 +10,44 @@ import ReloadButton from '@/components/reloadButton/reloadButton';
 
 import classes from './menuMobile.module.scss';
 
-export default function MenuMobile() {
-	const { state } = useContext(SearchContext);
-	const [menuIsOpen, setMenuIsOpen] = useState(false);
+type Props = {
+	openMenuFn: () => void;
+	menuIsOpen: boolean;
+};
 
-	const handleOpenMenu = () => {
-		setMenuIsOpen(!menuIsOpen);
-	};
+export default function MenuMobile({ openMenuFn, menuIsOpen }: Props) {
+	const [menuIsHidden, setMenuIsHidden] = useState(true);
+
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			setMenuIsHidden(false);
+		}, 200);
+
+		// Cleanup function to clear the timeout if the component unmounts
+		return () => clearTimeout(timeoutId);
+	}, []);
 
 	return (
-		<>
-			{menuIsOpen && (
-				<>
-					<section className={`${classes.optionsWrapper} ${classes.isMobile}`}>
-						<SortingButtons />
-						<span className={`${classes.breakLine} `}></span>
-						<CategoryButtons />
-						<span className={classes.breakLine}></span>
-						<PurityButtons />
-					</section>
-					<div className={`${classes.reloadButtonWrapper}`}>
-						<ReloadButton hiddenMenuFn={handleOpenMenu} />
-					</div>
-				</>
-			)}
-			<OptionBtn openCloseMenu={handleOpenMenu} isMenuOpen={menuIsOpen} />
-		</>
+		<div
+			className={`${classes.menuWrapper} ${menuIsOpen && classes.menuOpen} ${
+				!menuIsOpen && classes.menuHidden
+			}  ${menuIsHidden && classes.hidden}`}>
+			<div
+				className={`${classes.categoryWrapper} ${
+					menuIsOpen ? classes.opacityShowMenu : classes.opacityHiddenMenu
+				}  ${menuIsHidden && classes.hidden}`}>
+				<section className={`${classes.optionsWrapper} ${classes.isMobile} `}>
+					<SortingButtons />
+					<span className={`${classes.breakLine} `}></span>
+					<CategoryButtons />
+					<span className={classes.breakLine}></span>
+					<PurityButtons />
+				</section>
+				<div className={`${classes.reloadButtonWrapper}`}>
+					<ReloadButton hiddenMenuFn={openMenuFn} />
+				</div>
+			</div>
+			<OptionBtn openCloseMenu={openMenuFn} isMenuOpen={menuIsOpen} />
+		</div>
 	);
 }

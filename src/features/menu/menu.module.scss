@@ -2,7 +2,7 @@
 	position: fixed;
 	top: 5rem;
 	left: 0;
-	z-index: 2;
+	z-index: 1;
 	width: 100%;
 
 	display: flex;
@@ -10,9 +10,10 @@
 	align-items: flex-start;
 	flex-wrap: wrap;
 	gap: 0.6rem;
-	padding: 1rem 0 2.5rem 0;
-	background: linear-gradient(180deg, #202020 0%, #303030 100%);
-	box-shadow: 0px 4px 11.7px -2px #000000;
+	padding: 1rem 0 1rem 0;
+	// background: linear-gradient(180deg, #202020 0%, #303030 100%);
+	// box-shadow: 0px 4px 11.7px -2px #000000;
+	background-color: #303030;
 
 	@media (min-width: 1024px) {
 		flex-wrap: nowrap;

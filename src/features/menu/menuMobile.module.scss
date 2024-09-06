@@ -1,10 +1,91 @@
+@keyframes showMenu {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(26rem);
+	}
+}
+
+@keyframes hiddenMenu {
+	from {
+		transform: translateY(26rem);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes opacityHidden {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes opacityShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.menuOpen {
+	animation: showMenu 0.2s ease-in forwards;
+}
+
+.menuHidden {
+	animation: hiddenMenu 0.2s 0.15s ease-in both;
+}
+
+.opacityHiddenMenu {
+	animation: opacityHidden 0.15s ease-in both;
+}
+.opacityShowMenu {
+	animation: opacityShow 0.15s 0.2s ease-in both;
+}
+
+.hidden {
+	animation-duration: 0s;
+	animation-delay: 0s;
+}
+
+.menuWrapper {
+	display: block;
+	position: absolute;
+	bottom: -1.6rem;
+	left: 0;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	padding-top: 2rem;
+	padding-bottom: 3rem;
+	z-index: -3;
+	width: 100%;
+	// background: linear-gradient(180deg, #202020 0%, #303030 100%);
+	background-color: #303030;
+}
+
+.categoryWrapper {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	width: 100%;
+}
+
 .optionsWrapper {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
 	justify-content: center;
 	background-color: #1c1c1c;
-	width: 90%;
+	width: 95%;
 	max-width: 50rem;
 	border-radius: 6px;
 }
