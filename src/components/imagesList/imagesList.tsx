@@ -20,8 +20,8 @@ export default function ImagesList({ data: images }: { data: ImagesType[] }) {
 						<Image
 							src={image.thumbs.small.replace('//', '/')}
 							alt={'Image'}
-							width={300}
-							height={200}
+							fill={true}
+							objectFit={'cover'}
 							quality={100}
 						/>
 					</Link>
