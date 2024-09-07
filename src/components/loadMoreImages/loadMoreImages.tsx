@@ -9,6 +9,7 @@ import styled from './loadMoreImages.module.scss';
 
 import getImages from '@/actions/getImages';
 import paramsGenerator from '@/helpes/paramsGenerator';
+import { loadBindings } from 'next/dist/build/swc';
 
 interface ImagesParams {
 	categories: string;
@@ -20,9 +21,11 @@ interface ImagesParams {
 export default function LoadMoreImages({
 	searchParams,
 	fetchedNextPage,
+	staticLoad,
 }: {
 	searchParams: ImagesParams;
 	fetchedNextPage: undefined | boolean;
+	staticLoad?: boolean;
 }) {
 	const [images, setImages] = useState<ImagesType[]>([]);
 	const [page, setPage] = useState('2');
@@ -39,8 +42,25 @@ export default function LoadMoreImages({
 	//TODO use useCallback to  wrap this function
 	const loadMoreImages = async () => {
 		const nextPage = Number(page) + 1;
-		// const newImages = (await fetchImages(searchParams, page)) ?? [];
 		const { categories, purity, sorting } = paramsGenerator(state);
+		const newImages = await getImages(
+			{ categories: categories, purity: purity, sorting: sorting, query: state.query },
+			page
+		);
+
+		if (newImages.data.length === 0) {
+			setHasNextPage(false);
+		}
+
+		setImages((prevImages: ImagesType[]) => [...prevImages, ...newImages.data]);
+		setPage(String(nextPage));
+	};
+
+	const loadStaticImages = async () => {
+		const nextPage = Number(page) + 1;
+		const categories = '111';
+		const purity = '100';
+		const sorting = 'random';
 
 		const newImages = await getImages(
 			{ categories: categories, purity: purity, sorting: sorting, query: state.query },
@@ -57,7 +77,11 @@ export default function LoadMoreImages({
 
 	useEffect(() => {
 		if (inView) {
-			loadMoreImages();
+			if (staticLoad) {
+				loadStaticImages();
+			} else {
+				loadMoreImages();
+			}
 		}
 	}, [inView]);
 

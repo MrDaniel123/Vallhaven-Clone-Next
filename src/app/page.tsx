@@ -5,9 +5,10 @@ import ImagesList from '@/components/imagesList/imagesList';
 import { ImagesType } from '@/types/imagesType';
 
 import classes from './page.module.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
 import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
+import { SearchContext } from '@/context/context';
 
 export default function Page() {
 	const [images, setImages] = useState<ImagesType[] | null>(null);
@@ -45,6 +46,7 @@ export default function Page() {
 							sorting: 'random',
 							query: '',
 						}}
+						staticLoad={true}
 					/>
 				</>
 			)}
