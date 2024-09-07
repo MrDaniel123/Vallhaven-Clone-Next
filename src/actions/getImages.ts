@@ -17,9 +17,9 @@ export default async function fetchImages(
 	{ categories, purity, sorting, query }: ImagesParams,
 	page: string
 ) {
-	console.log(
-		`Category: ${categories}, Purity: ${purity}, Sorting: ${sorting}, Query: ${query}, Page: ${page}`
-	);
+	// console.log(
+	// 	`Category: ${categories}, Purity: ${purity}, Sorting: ${sorting}, Query: ${query}, Page: ${page}`
+	// );
 	try {
 		const response = await axios.get<ImageApiResponseType>(`${baseURL}`, {
 			params: {

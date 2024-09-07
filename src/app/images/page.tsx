@@ -3,9 +3,7 @@
 import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
 import classes from './page.module.scss';
 import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
-import paramsGenerator from '@/helpes/paramsGenerator';
-import { SearchContext } from '@/context/context';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import getImages from '@/actions/getImages';
 import ImagesList from '@/components/imagesList/imagesList';
 import { ImagesType } from '@/types/imagesType';

@@ -1,18 +1,53 @@
-// async function getData() {
-// 	const res = await fetch(
-// 		'http://localhost:3000/images?purity=100&categories=100&sorting=hot&page=5&query=anime'
-// 	);
+'use client';
 
-// 	if (!res.ok) {
-// 		// This will activate the closest `error.js` Error Boundary
-// 		throw new Error('Failed to fetch data');
-// 	}
-
-// 	return res.json();
-// }
+import getImages from '@/actions/getImages';
+import ImagesList from '@/components/imagesList/imagesList';
+import { ImagesType } from '@/types/imagesType';
 
 import classes from './page.module.scss';
+import { useEffect, useState } from 'react';
+import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
+import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
 
-export default async function Page() {
-	return <div className={classes.page}>Home Page</div>;
+export default function Page() {
+	const [images, setImages] = useState<ImagesType[] | null>(null);
+
+	const loadImages = async () => {
+		const images = await getImages(
+			{
+				categories: '111',
+				purity: '100',
+				sorting: 'random',
+				query: '',
+			},
+			'1'
+		);
+
+		setImages(images.data);
+	};
+
+	useEffect(() => {
+		setImages(null);
+		loadImages();
+	}, []);
+
+	return (
+		<div className={classes.page}>
+			<ScrollOnTop />
+			{images && (
+				<>
+					<ImagesList data={images} />
+					<LoadMoreImages
+						fetchedNextPage={images?.length < 24}
+						searchParams={{
+							categories: '111',
+							purity: '100',
+							sorting: 'random',
+							query: '',
+						}}
+					/>
+				</>
+			)}
+		</div>
+	);
 }
