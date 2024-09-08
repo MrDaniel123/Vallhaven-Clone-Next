@@ -22,6 +22,20 @@
 	}
 }
 
+.showOnScroll {
+	transform: translateY(0);
+	transition: 0.2s linear;
+}
+
+.hiddenOnScroll {
+	transform: translateY(-80px);
+	transition: 0.2s linear;
+
+	@media (min-width: '1024px') {
+		transform: translateY(0);
+	}
+}
+
 .optionsWrapper {
 	display: flex;
 	align-items: center;
