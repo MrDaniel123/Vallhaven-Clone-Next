@@ -1,14 +1,16 @@
 'use client';
 
-import getImages from '@/actions/getImages';
-import ImagesList from '@/components/imagesList/imagesList';
-import { ImagesType } from '@/types/imagesType';
+import { useEffect, useState } from 'react';
 
-import classes from './page.module.scss';
-import { useContext, useEffect, useState } from 'react';
+import ImagesList from '@/components/imagesList/imagesList';
 import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
 import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
-import { SearchContext } from '@/context/context';
+import Tags from '@/components/tags/tags';
+
+import classes from './page.module.scss';
+import getImages from '@/actions/getImages';
+import { ImagesType } from '@/types/imagesType';
+import { tags } from '@/helpes/tags';
 
 export default function Page() {
 	const [images, setImages] = useState<ImagesType[] | null>(null);
@@ -35,6 +37,7 @@ export default function Page() {
 	return (
 		<div className={classes.page}>
 			<ScrollOnTop />
+			<Tags tags={tags} />
 			{images && (
 				<>
 					<ImagesList data={images} />

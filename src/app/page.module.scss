@@ -8,4 +8,8 @@
 	min-height: 100vh;
 	padding: 2rem;
 	padding-top: 12rem;
+
+	@media (max-width: '1024px') {
+		padding-top: 14rem;
+	}
 }
