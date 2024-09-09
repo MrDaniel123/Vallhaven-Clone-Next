@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import classes from './searchQuery.module.scss';
 import loupe from '@/assets/Loupe.png';
@@ -21,6 +22,7 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 	const [query, setQuery] = useState<string | null>('');
 
 	const searchParams = useSearchParams();
+	const router = useRouter();
 	const queryParam = searchParams.get('query');
 
 	useEffect(() => {
@@ -32,6 +34,8 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 	}
 
 	function onCLickHandle(query: String) {
+		console.log(query);
+
 		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
 	}
 
@@ -43,6 +47,12 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 				id=''
 				value={query ? query : ''}
 				onChange={e => handleInputChange(e)}
+				onKeyDown={e => {
+					if (e.key === 'Enter') {
+						onCLickHandle(query ? query : '');
+						router.push(`/images?categories=111&purity=111&sorting=latest&query=${query}`);
+					}
+				}}
 			/>
 			<Link
 				href={{

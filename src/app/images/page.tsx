@@ -3,10 +3,11 @@
 import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
 import classes from './page.module.scss';
 import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import getImages from '@/actions/getImages';
 import ImagesList from '@/components/imagesList/imagesList';
 import { ImagesType } from '@/types/imagesType';
+import { SearchContext } from '@/context/context';
 
 interface ImagesParams {
 	categories: string;
@@ -17,6 +18,7 @@ interface ImagesParams {
 
 export default function ImagesPage({ searchParams }: { searchParams: ImagesParams }) {
 	const [images, setImages] = useState<ImagesType[] | null>(null);
+	const { state } = useContext(SearchContext);
 
 	const loadImages = async () => {
 		const images = await getImages(
@@ -24,7 +26,7 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 				categories: searchParams.categories,
 				purity: searchParams.purity,
 				sorting: searchParams.sorting,
-				query: searchParams.query,
+				query: state.query,
 			},
 			'1'
 		);
