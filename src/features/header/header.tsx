@@ -20,16 +20,24 @@ export default function Header() {
 					</Link>
 				</div>
 				<div className={`${classes.container} ${classes.linkContainer}`}>
-					<Link href={'/'} className={classes.link}>
+					<Link
+						href={'/images?categories=111&purity=110&sorting=latest&query='}
+						className={classes.link}>
 						Latest
 					</Link>
-					<Link href={'/'} className={classes.link}>
+					<Link
+						href={'/images?categories=111&purity=111&sorting=hot&query='}
+						className={classes.link}>
 						Hot
 					</Link>
-					<Link href={'/'} className={classes.link}>
+					<Link
+						href={'/images?categories=111&purity=111&sorting=topList&query='}
+						className={classes.link}>
 						TopList
 					</Link>
-					<Link href={'/'} className={classes.link}>
+					<Link
+						href={'/images?categories=111&purity=111&sorting=random&query='}
+						className={classes.link}>
 						Random
 					</Link>
 				</div>
