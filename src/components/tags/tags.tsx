@@ -8,7 +8,6 @@ import { SearchContext } from '@/context/context';
 
 export default function Tags({ tags }: { tags: TagsType[] }) {
 	const { dispatch } = useContext(SearchContext);
-	console.log(tags);
 
 	function onCLickHandle(query: String) {
 		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
