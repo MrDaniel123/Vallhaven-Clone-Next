@@ -37,9 +37,3 @@ export default async function fetchImages(
 		throw new Error('Any fetch error:', error);
 	}
 }
-
-// const response = await fetch(
-// 	`${baseURL}categories=${categories}&purity=${purity}&sorting=${sorting}&q=${query}&page=${page}&apikey=${API_KEY}`
-// );
-
-// return response.json() as Promise<ImageApiResponseType>;

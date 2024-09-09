@@ -29,6 +29,7 @@ export default function ImagesList({ data: images }: { data: ImagesType[] }) {
 							fill={true}
 							sizes={'100%'}
 							quality={100}
+							priority={true}
 						/>
 					</Link>
 				);

@@ -21,13 +21,13 @@ function Picture({ src, alt, width, height }: Props) {
 	return (
 		<>
 			<div className={`${classes.imageWrapper}`} onClick={() => setImagePopup(true)}>
-				<Image src={src} alt={alt} width={width} height={height} />
+				<Image src={src} alt={alt} width={width} height={height} priority={true} />
 			</div>
 			{imagePopup && (
 				<div className={`${classes.imagePopupWrapper}`} onClick={() => setImagePopup(!imagePopup)}>
 					<div className={classes.imageWrap}>
 						<Link href={src} target={'_blank'}>
-							<Image src={src} alt={alt} width={width} height={height} />
+							<Image src={src} alt={alt} width={width} height={height} priority={true} />
 						</Link>
 						<div className={classes.close} onClick={() => setImagePopup(false)}>
 							<Image src={closeIcon} alt={'Close image'} />

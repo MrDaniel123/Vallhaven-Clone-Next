@@ -121,15 +121,6 @@ export const tags: TagsType[] = [
 		purity: 'sfw',
 	},
 	{
-		alias: 'computers, computer science, Computing, PC, pc, Personal Computer',
-		category: 'Technology',
-		category_id: 39,
-		created_at: '2014-03-19 20:41:24',
-		id: 811,
-		name: 'computer',
-		purity: 'sfw',
-	},
-	{
 		alias: 'blue water, Watter',
 		category: 'Miscellaneous',
 		category_id: 4,
