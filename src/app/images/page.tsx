@@ -47,7 +47,7 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 			{images && (
 				<>
 					<ImagesList data={images} />
-					<LoadMoreImages fetchedNextPage={images?.length >= 24} searchParams={searchParams} />
+					<LoadMoreImages fetchedNextPage={images?.length > 24} searchParams={searchParams} />
 				</>
 			)}
 		</div>
