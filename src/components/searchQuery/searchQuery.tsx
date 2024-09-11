@@ -8,7 +8,9 @@ import classes from './searchQuery.module.scss';
 import loupe from '@/assets/Loupe.png';
 import Link from 'next/link';
 import { SearchContext } from '@/context/context';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+
+import closeIcon from '@/assets/CloseRed.png';
 
 interface ImagesParams {
 	categories: string;
@@ -41,19 +43,32 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 
 	return (
 		<div className={`${classes.searchQuery} ${isMobile ? classes.mobile : classes.desktop}`}>
-			<input
-				type='text'
-				name=''
-				id=''
-				value={query ? query : ''}
-				onChange={e => handleInputChange(e)}
-				onKeyDown={e => {
-					if (e.key === 'Enter') {
-						onCLickHandle(query ? query : '');
-						router.push(`/images?categories=111&purity=111&sorting=latest&query=${query}`);
-					}
-				}}
-			/>
+			<div className={classes.inputWrapper}>
+				{query && query.length >= 1 && (
+					<button
+						className={classes.clearQueryBtn}
+						onClick={() => {
+							setQuery('');
+							dispatch({ type: 'SET-QUERY', payload: '' });
+						}}>
+						<Image src={closeIcon} alt={'Reset query button'} />
+					</button>
+				)}
+				<input
+					type='text'
+					name=''
+					id=''
+					className={classes.input}
+					value={query ? query : ''}
+					onChange={e => handleInputChange(e)}
+					onKeyDown={e => {
+						if (e.key === 'Enter') {
+							onCLickHandle(query ? query : '');
+							router.push(`/images?categories=111&purity=111&sorting=latest&query=${query}`);
+						}
+					}}
+				/>
+			</div>
 			<Link
 				href={{
 					pathname: '/images',
@@ -64,7 +79,7 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 						query: query,
 					},
 				}}>
-				<button onClick={() => onCLickHandle(query ? query : '')}>
+				<button className={classes.searchButton} onClick={() => onCLickHandle(query ? query : '')}>
 					<Image src={loupe} alt={'Loupe'}></Image>
 				</button>
 			</Link>

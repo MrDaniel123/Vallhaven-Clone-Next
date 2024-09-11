@@ -1,3 +1,12 @@
+@keyframes showButton {
+	from {
+		transform: translate(5px, -50%);
+	}
+	to {
+		transform: translate(0px, -50%);
+	}
+}
+
 .searchQuery {
 	display: none;
 	align-items: center;
@@ -5,36 +14,57 @@
 	gap: 1.2rem;
 	width: 100%;
 	max-width: 50rem;
+}
+.input {
+	border: none;
+	padding: 1rem;
+	min-width: 20rem;
+	width: 90%;
+	height: 4rem;
+	border-radius: 6px;
+	outline: none;
+	background-color: #4f4f4f;
+	font-size: 2rem;
+}
 
-	input {
-		border: none;
-		padding: 1rem;
-		min-width: 20rem;
-		width: 90%;
-		height: 4rem;
-		border-radius: 6px;
-		outline: none;
-		background-color: #4f4f4f;
-		font-size: 2rem;
-		// &:focus {
-		// 	outline: #4f4f4f;
-		// }
-	}
+.inputWrapper {
+	position: relative;
+}
 
-	button {
-		all: unset;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: #8a8a8a;
+.clearQueryBtn {
+	position: absolute;
+	top: 50%;
+	right: 3rem;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-items: center;
+	background-color: transparent;
+	height: 2.6rem;
+	border: none;
 
-		height: 4rem;
-		width: 5rem;
-		border-radius: 6px;
+	animation: showButton 0.3s ease-in none;
+
+	filter: drop-shadow(0px 0px 7.6px #000000);
+
+	img {
+		width: 100%;
+		height: 100%;
 	}
 }
 
-.mobile {
+.searchButton {
+	all: unset;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #8a8a8a;
+
+	height: 4rem;
+	width: 5rem;
+	border-radius: 6px;
+}
+.inputWrapper .mobile {
 	@media (max-width: 1024px) {
 		display: flex;
 	}
