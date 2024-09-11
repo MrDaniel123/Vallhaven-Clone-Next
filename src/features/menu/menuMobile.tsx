@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import OptionBtn from './optionBtn';
 import PurityButtons from '@/components/purityButtons/purityButtons';
@@ -22,8 +22,6 @@ export default function MenuMobile({ openMenuFn, menuIsOpen }: Props) {
 		const timeoutId = setTimeout(() => {
 			setMenuIsHidden(false);
 		}, 200);
-
-		// Cleanup function to clear the timeout if the component unmounts
 		return () => clearTimeout(timeoutId);
 	}, []);
 

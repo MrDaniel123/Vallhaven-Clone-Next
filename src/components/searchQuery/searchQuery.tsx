@@ -12,13 +12,6 @@ import { useSearchParams } from 'next/navigation';
 
 import closeIcon from '@/assets/CloseRed.png';
 
-interface ImagesParams {
-	categories: string;
-	purity: string;
-	sorting: string;
-	query: string;
-}
-
 export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 	const { dispatch } = useContext(SearchContext);
 	const [query, setQuery] = useState<string | null>('');
@@ -46,7 +39,7 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 			<div className={classes.inputWrapper}>
 				{query && query.length >= 1 && (
 					<button
-						className={classes.clearQueryBtn}
+						className={`${classes.clearQueryBtn}`}
 						onClick={() => {
 							setQuery('');
 							dispatch({ type: 'SET-QUERY', payload: '' });

@@ -19,7 +19,7 @@
 	border: none;
 	padding: 1rem;
 	min-width: 20rem;
-	width: 90%;
+	width: 100%;
 	height: 4rem;
 	border-radius: 6px;
 	outline: none;
@@ -29,12 +29,16 @@
 
 .inputWrapper {
 	position: relative;
+	width: 100%;
+	display: flex;
+	justify-items: center;
+	align-items: center;
 }
 
 .clearQueryBtn {
 	position: absolute;
 	top: 50%;
-	right: 3rem;
+	right: 5px;
 	transform: translateY(-50%);
 	display: flex;
 	align-items: center;
@@ -64,7 +68,8 @@
 	width: 5rem;
 	border-radius: 6px;
 }
-.inputWrapper .mobile {
+
+.mobile {
 	@media (max-width: 1024px) {
 		display: flex;
 	}

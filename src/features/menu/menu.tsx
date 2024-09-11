@@ -37,7 +37,7 @@ export default function Menu() {
 		<>
 			<div
 				className={`${classes.menuWrapper}  ${
-					showOnScroll ? classes.showOnScroll : classes.hiddenOnScroll
+					!menuIsOpen && (showOnScroll ? classes.showOnScroll : classes.hiddenOnScroll)
 				}`}>
 				<div className={classes.searchQueryWrapper}>
 					<SearchQuery isMobile={true} />
