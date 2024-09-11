@@ -18,6 +18,7 @@ export default function ReloadButton({ hiddenMenuFn }: Props) {
 
 	const handleOnClick = () => {
 		hiddenMenuFn();
+		dispatch({ type: 'SELECT-SORTING', payload: sorting });
 		dispatch({ type: 'RELOAD' });
 	};
 

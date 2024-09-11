@@ -14,6 +14,7 @@ export default function paramsGenerator(state: ReducerType) {
 		state.categoryAnime ? '1' : '0',
 		state.categoryPeople ? '1' : '0'
 	);
+	console.log(state.sorting);
 
 	return {
 		purity: purityArray.join('').toString(),

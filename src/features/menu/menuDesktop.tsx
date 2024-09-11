@@ -11,15 +11,7 @@ import classes from './menuDesktop.module.scss';
 import DropDownMenu from '@/components/dropDownMenu/dropDownMenu';
 
 //Is a list of sorting categories
-const sortingCategories = [
-	'latest',
-	'hot',
-	'topList',
-	'random',
-	'topViews',
-	'favorites',
-	'reverence',
-];
+const sortingCategories = ['latest', 'hot', 'toplist', 'random', 'views', 'favorites', 'reverence'];
 
 export default function MenuDesktop() {
 	const { state } = useContext(SearchContext);

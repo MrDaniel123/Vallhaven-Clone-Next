@@ -10,8 +10,8 @@ export default function SortingButtons() {
 	return (
 		<div className={`${classes.buttonsWrapper} ${classes.sortingWrapper}`}>
 			<SortingButton
-				onClickHandler={() => dispatch({ type: 'SELECT-SORTING', payload: 'topList' })}
-				color={state.sorting === 'topList' ? '#570F63' : undefined}>
+				onClickHandler={() => dispatch({ type: 'SELECT-SORTING', payload: 'toplist' })}
+				color={state.sorting === 'toplist' ? '#570F63' : undefined}>
 				Top List
 			</SortingButton>
 			<SortingButton
@@ -20,7 +20,7 @@ export default function SortingButtons() {
 				Latest
 			</SortingButton>
 			<SortingButton
-				onClickHandler={() => dispatch({ type: 'SELECT-SORTING', payload: 'topViews' })}
+				onClickHandler={() => dispatch({ type: 'SELECT-SORTING', payload: 'views' })}
 				color={state.sorting === 'topViews' ? '#570F63' : undefined}>
 				Top Views
 			</SortingButton>

@@ -31,7 +31,7 @@ export default function Header() {
 						Hot
 					</Link>
 					<Link
-						href={'/images?categories=111&purity=111&sorting=topList&query='}
+						href={'/images?categories=111&purity=111&sorting=toplist&query='}
 						className={classes.link}>
 						TopList
 					</Link>

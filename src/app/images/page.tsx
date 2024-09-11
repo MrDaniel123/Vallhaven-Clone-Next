@@ -8,6 +8,7 @@ import getImages from '@/actions/getImages';
 import ImagesList from '@/components/imagesList/imagesList';
 import { ImagesType } from '@/types/imagesType';
 import { SearchContext } from '@/context/context';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 interface ImagesParams {
 	categories: string;
@@ -21,11 +22,12 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 	const { state } = useContext(SearchContext);
 
 	const loadImages = async () => {
+		const { categories, purity } = paramsGenerator(state);
 		const images = await getImages(
 			{
-				categories: searchParams.categories,
-				purity: searchParams.purity,
-				sorting: searchParams.sorting,
+				categories: categories,
+				purity: purity,
+				sorting: state.sorting,
 				query: state.query,
 			},
 			'1'
@@ -37,7 +39,7 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 	useEffect(() => {
 		setImages(null);
 		loadImages();
-	}, [searchParams]);
+	}, [searchParams, state.reloadCount]);
 
 	return (
 		<div className={classes.wrapper}>
