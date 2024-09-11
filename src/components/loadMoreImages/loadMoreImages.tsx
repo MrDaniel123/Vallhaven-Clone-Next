@@ -9,7 +9,6 @@ import styled from './loadMoreImages.module.scss';
 
 import getImages from '@/actions/getImages';
 import paramsGenerator from '@/helpes/paramsGenerator';
-import { loadBindings } from 'next/dist/build/swc';
 
 interface ImagesParams {
 	categories: string;
@@ -63,7 +62,7 @@ export default function LoadMoreImages({
 		const sorting = 'random';
 
 		const newImages = await getImages(
-			{ categories: categories, purity: purity, sorting: sorting, query: state.query },
+			{ categories: categories, purity: purity, sorting: sorting, query: searchParams.query },
 			page
 		);
 
