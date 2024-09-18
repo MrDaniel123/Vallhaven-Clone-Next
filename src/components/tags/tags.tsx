@@ -10,7 +10,7 @@ import paramsGenerator from '@/helpes/paramsGenerator';
 export default function Tags({ tags }: { tags: TagsType[] }) {
 	const { state, dispatch } = useContext(SearchContext);
 
-	const { purity, sorting } = paramsGenerator(state);
+	console.log(tags);
 
 	function onCLickHandle(query: String) {
 		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
