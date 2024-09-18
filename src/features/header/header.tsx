@@ -26,17 +26,17 @@ export default function Header() {
 						Latest
 					</Link>
 					<Link
-						href={'/images?categories=111&purity=111&sorting=hot&query='}
+						href={'/images?categories=111&purity=110&sorting=hot&query='}
 						className={classes.link}>
 						Hot
 					</Link>
 					<Link
-						href={'/images?categories=111&purity=111&sorting=toplist&query='}
+						href={'/images?categories=111&purity=110&sorting=toplist&query='}
 						className={classes.link}>
 						TopList
 					</Link>
 					<Link
-						href={'/images?categories=111&purity=111&sorting=random&query='}
+						href={'/images?categories=111&purity=110&sorting=random&query='}
 						className={classes.link}>
 						Random
 					</Link>

@@ -1,14 +1,15 @@
 'use client';
 
-import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
-import classes from './page.module.scss';
-import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
 import { useContext, useEffect, useState } from 'react';
-import getImages from '@/actions/getImages';
+
+import ScrollOnTop from '@/components/scrollOnTop/scrollOnTop';
+import LoadMoreImages from '@/components/loadMoreImages/loadMoreImages';
 import ImagesList from '@/components/imagesList/imagesList';
-import { ImagesType } from '@/types/imagesType';
+
 import { SearchContext } from '@/context/context';
-import paramsGenerator from '@/helpes/paramsGenerator';
+import { ImagesType } from '@/types/imagesType';
+import getImages from '@/actions/getImages';
+import classes from './page.module.scss';
 
 interface ImagesParams {
 	categories: string;
@@ -22,13 +23,12 @@ export default function ImagesPage({ searchParams }: { searchParams: ImagesParam
 	const { state } = useContext(SearchContext);
 
 	const loadImages = async () => {
-		const { categories, purity } = paramsGenerator(state);
 		const images = await getImages(
 			{
-				categories: categories,
-				purity: purity,
-				sorting: state.sorting,
-				query: state.query,
+				categories: searchParams.categories,
+				purity: searchParams.purity,
+				sorting: searchParams.sorting,
+				query: searchParams.query,
 			},
 			'1'
 		);

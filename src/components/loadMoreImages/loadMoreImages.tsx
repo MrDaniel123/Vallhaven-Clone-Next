@@ -8,7 +8,6 @@ import ImagesList from '../imagesList/imagesList';
 import styled from './loadMoreImages.module.scss';
 
 import getImages from '@/actions/getImages';
-import paramsGenerator from '@/helpes/paramsGenerator';
 
 interface ImagesParams {
 	categories: string;
@@ -41,9 +40,13 @@ export default function LoadMoreImages({
 	//TODO use useCallback to  wrap this function
 	const loadMoreImages = async () => {
 		const nextPage = Number(page) + 1;
-		const { categories, purity, sorting } = paramsGenerator(state);
 		const newImages = await getImages(
-			{ categories: categories, purity: purity, sorting: sorting, query: state.query },
+			{
+				categories: searchParams.categories,
+				purity: searchParams.purity,
+				sorting: searchParams.sorting,
+				query: searchParams.query,
+			},
 			page
 		);
 
