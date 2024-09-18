@@ -1,20 +1,23 @@
 'use client';
 
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 
+import { SearchContext } from '@/context/context';
 import classes from './searchQuery.module.scss';
 import loupe from '@/assets/Loupe.png';
-import Link from 'next/link';
-import { SearchContext } from '@/context/context';
-import { useSearchParams } from 'next/navigation';
 
 import closeIcon from '@/assets/CloseRed.png';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
-	const { dispatch } = useContext(SearchContext);
+	const { state, dispatch } = useContext(SearchContext);
 	const [query, setQuery] = useState<string | null>('');
+
+	const { purity, categories, sorting } = paramsGenerator(state);
 
 	const searchParams = useSearchParams();
 	const router = useRouter();
@@ -29,7 +32,11 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 	}
 
 	function onCLickHandle(query: String) {
-		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
+		dispatch({ type: 'SET-QUERY', payload: query });
+		dispatch({ type: 'RELOAD' });
+		router.push(
+			`/images?categories=${categories}&purity=${purity}&sorting=${sorting}&query=${query}`
+		);
 	}
 
 	return (
@@ -55,25 +62,16 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 					onKeyDown={e => {
 						if (e.key === 'Enter') {
 							onCLickHandle(query ? query : '');
-							router.push(`/images?categories=111&purity=111&sorting=latest&query=${query}`);
+							router.push(
+								`/images?categories=${categories}&purity=${purity}&sorting=${sorting}&query=${query}`
+							);
 						}
 					}}
 				/>
 			</div>
-			<Link
-				href={{
-					pathname: '/images',
-					query: {
-						categories: '111',
-						purity: '111',
-						sorting: 'latest',
-						query: query,
-					},
-				}}>
-				<button className={classes.searchButton} onClick={() => onCLickHandle(query ? query : '')}>
-					<Image src={loupe} alt={'Loupe'}></Image>
-				</button>
-			</Link>
+			<button className={classes.searchButton} onClick={() => onCLickHandle(query ? query : '')}>
+				<Image src={loupe} alt={'Loupe'}></Image>
+			</button>
 		</div>
 	);
 }

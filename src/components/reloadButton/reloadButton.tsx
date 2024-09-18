@@ -1,12 +1,12 @@
-import { useContext } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useContext } from 'react';
+
+import paramsGenerator from '@/helpes/paramsGenerator';
 import { SearchContext } from '@/context/context';
-import classes from './reloadButton.module.scss';
-import { useRouter } from 'next/navigation';
 
 import reloadIcon from '@/assets/Reload.png';
-import paramsGenerator from '@/helpes/paramsGenerator';
+import classes from './reloadButton.module.scss';
 
 interface Props {
 	hiddenMenuFn: () => void;
@@ -18,7 +18,6 @@ export default function ReloadButton({ hiddenMenuFn }: Props) {
 
 	const handleOnClick = () => {
 		hiddenMenuFn();
-		dispatch({ type: 'SELECT-SORTING', payload: sorting });
 		dispatch({ type: 'RELOAD' });
 	};
 

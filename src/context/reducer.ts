@@ -49,26 +49,13 @@ export function reducer(state: ReducerType, action: ReducerAction) {
 		case 'SELECT-PURITY-SKETCHY':
 			return { ...state, puritySketchy: !state.puritySketchy };
 		case 'RELOAD':
-			return { ...state, reloadCount: state.reloadCount + 1, query: '' };
+			return { ...state, reloadCount: state.reloadCount + 1 };
 		case 'SELECT-SORTING':
 			return { ...state, sorting: action.payload };
 		case 'SAVEIMAGES':
 			return { ...state, images: action.payload };
 		case 'SET-QUERY':
 			return { ...state, query: action.payload };
-		case 'SELECT-PARAMS-TAG':
-			return {
-				...state,
-				categoryAnime: true,
-				categoryGeneral: true,
-				categoryPeople: true,
-				purityNsfw: true,
-				puritySfw: true,
-				puritySketchy: true,
-				reloadCount: state.reloadCount + 1,
-				query: action.payload,
-				sorting: 'latest',
-			};
 		case 'SET-STATE':
 			return {
 				...state,

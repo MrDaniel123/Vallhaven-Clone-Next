@@ -5,9 +5,12 @@ import classes from './tags.module.scss';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { SearchContext } from '@/context/context';
+import paramsGenerator from '@/helpes/paramsGenerator';
 
 export default function Tags({ tags }: { tags: TagsType[] }) {
-	const { dispatch } = useContext(SearchContext);
+	const { state, dispatch } = useContext(SearchContext);
+
+	const { purity, sorting } = paramsGenerator(state);
 
 	function onCLickHandle(query: String) {
 		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
@@ -22,8 +25,8 @@ export default function Tags({ tags }: { tags: TagsType[] }) {
 						pathname: '/images',
 						query: {
 							categories: '111',
-							purity: '111',
-							sorting: 'latest',
+							purity: purity,
+							sorting: sorting,
 							query: tag.name,
 						},
 					}}
