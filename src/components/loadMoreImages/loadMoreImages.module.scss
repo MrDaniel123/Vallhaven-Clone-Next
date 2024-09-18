@@ -11,10 +11,13 @@
 	h1 {
 		font-size: 2rem;
 		color: #fff;
+
+		@media (max-width: '600px') {
+			font-size: 1.6rem;
+		}
 	}
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
 	width: 60px;
 	aspect-ratio: 4;
