@@ -56,6 +56,19 @@ export function reducer(state: ReducerType, action: ReducerAction) {
 			return { ...state, images: action.payload };
 		case 'SET-QUERY':
 			return { ...state, query: action.payload };
+		case 'SELECT-PARAMS-TAG':
+			return {
+				...state,
+				categoryAnime: true,
+				categoryGeneral: true,
+				categoryPeople: true,
+				purityNsfw: false,
+				puritySfw: true,
+				puritySketchy: true,
+				reloadCount: state.reloadCount + 1,
+				query: action.payload,
+				sorting: 'latest',
+			};
 		case 'SET-STATE':
 			return {
 				...state,

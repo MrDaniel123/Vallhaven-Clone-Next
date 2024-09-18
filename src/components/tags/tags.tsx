@@ -25,8 +25,8 @@ export default function Tags({ tags }: { tags: TagsType[] }) {
 						pathname: '/images',
 						query: {
 							categories: '111',
-							purity: purity,
-							sorting: sorting,
+							purity: '110',
+							sorting: 'latest',
 							query: tag.name,
 						},
 					}}
