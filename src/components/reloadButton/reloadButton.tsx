@@ -30,7 +30,7 @@ export default function ReloadButton({ hiddenMenuFn }: Props) {
 					categories: categories,
 					purity: purity,
 					sorting: sorting,
-					query: '',
+					query: state.query,
 				},
 			}}>
 			<button className={classes.button} onClick={handleOnClick}>

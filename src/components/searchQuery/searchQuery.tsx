@@ -29,8 +29,6 @@ export default function SearchQuery({ isMobile }: { isMobile?: boolean }) {
 	}
 
 	function onCLickHandle(query: String) {
-		console.log(query);
-
 		dispatch({ type: 'SELECT-PARAMS-TAG', payload: query });
 	}
 
