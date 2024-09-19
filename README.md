@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vallhaven Clone
 
-## Getting Started
+![](https://github.com/user-attachments/assets/a0f7cb7f-bc17-460b-be0c-ab89f0f81051)
 
-First, run the development server:
+This app is clone [vallhaven.cc](https://wallhaven.cc/). I want a create my own version of this website because  website has a simple layout and easy configure api. I designed my own mobile version because original site has no offer mobile version. Abaut API and how to use [wallhaven.cc/help/api](https://wallhaven.cc/help/api).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Technologies Used
+
+- **Next** The app using NextJs framework. Build on create-next-app.
+- **Css Modules** For styling i use a css module that built in the next framework.
+- **Axios** For api request.
+
+## Usage
+
+1. Clone the repository to your local machine using the following command:
+
+```
+git clone https://github.com/MrDaniel123/Vallhaven-Clone-Next.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd Vallhaven-Clone-Next
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. Install the required dependencies:
 
-## Learn More
+```
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
+## Demo Images
+![](https://github.com/user-attachments/assets/c5871293-3295-489a-b617-040cc125c766)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![](https://github.com/user-attachments/assets/1fc55ba3-cbba-40df-81c7-09ad01ad3434)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![](https://github.com/user-attachments/assets/b31ddbfb-8ed1-49a3-bf89-27cd2b9cfe00)
